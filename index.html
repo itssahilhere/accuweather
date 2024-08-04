@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title id="name">Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+              /* Add CSS styles for the weather app here */
+              body {
+                font-family: Arial, sans-serif;
+                box-sizing: border-box;
+                display: block;
+                background: rgb(34,145,156);
+        background: linear-gradient(90deg, rgba(34,145,156,1) 0%, rgba(19,127,166,1) 50%, rgba(22,28,169,1) 100%);
+              }
+              #weather-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: auto;
+                height: fit-content;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #968787;
+                border-radius: 5px;
+                box-shadow: 0 0 5px #c5abab,
+          0 0 10px #fff,
+          0 0 20px rgb(70, 106, 169),
+          0 0 30px ,
+          0 0 40px ,
+          0 0 55px ,
+          0 0 70px ;
+              }
+              h1 {
+                text-align: center;
+                color: #0e0206;
+      text-shadow: 0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 20px black,
+          0 0 30px ,
+          0 0 40px ,
+          0 0 55px ,
+          0 0 70px ;
+              }
+              form {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                flex-direction: column;
+                margin-bottom: 20px;
+                margin-top: 20px; 
+                row-gap: 10px;
+              }
+
+              #location-input {
+                width: 200px;
+                padding: 10px;
+                border-radius: 5px;
+              }
+              #location-form button {
+                padding: 10px 20px;
+                border: none;
+                background-color: #eb4908;
+                color: white;
+                border-radius: 5px;
+              }
+              #location-form button:hover{
+                background-color: #ba2609;
+              }
+              #weather-data {
+                background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUTEhMWFRUVFxUXFRcVFRUVFxUWFRUWFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0lHSUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAADBAABAgUGB//EADQQAAEDAwMCAwYGAgMBAAAAAAEAAhEDBCESMUFRYQUTcSKBkbHR8AYUMqHB4RXxUmJyQv/EABoBAAMBAQEBAAAAAAAAAAAAAAABAgMEBQb/xAAjEQACAgICAgMBAQEAAAAAAAAAAQIREiEDMQRBEyJRFDIF/9oADAMBAAIRAxEAPwDz+lQhGIQ3BfTWfHtAislEIWCExGVULUKoQMpUtQpCAszCqFqFIQOzMKQtQogLMqLUKQgLMQpC3CqEBZmFIWoUhA7MQqhbhSEBZiFULcKoQOzCi3CqEDsxCkLcKoSHZhSFuFUICzMKLUKQgdmYVhXCgCQWaataJWVsFBDM+WqRdSiAseKwUctWSxKysGAIWCEx5ayWIsTgALVUI+lZLE7JcQMKoRvLU8tOxYsDCkI3lKGki0LFgYUhF0KoRYUDhSESFNKdiBwpC3pU0osAcKQt6VNKBg4Uhb0qQgDEKoW4U0pAYhVCKGLQolFlJMBCmlOMs3EFwaSBuQCQPU8Lq+FfhWrXaH4YwiQ53I7AZ+MKJcsIq2zSHDyTdRR52FUL2DvwZDC51YTmAGmJGwJn+F5avQcw6XCDjB7qYc0J/wCWVycHJxVmqAQpC1CkLUyszpU0rSuEhWYhahWrhAWUotQogR2tHZWKfZdGraBANt0K5fks9T4mhU0wsmmE06iUIsTUhOAMW4WTbosqg5O2TjECaKrywmICjgnkS4IXACswiH1Uq03N/UCJ2kET3EosmgWkLLqQW5HVTCdipMXdSWTTKZLVWlVkQ+NCpYVWgpktVQnkR8YvpKvSjKoRkPACWKaEw1qJ5E7JZjXFYnoWgxNflXdEey8Jq1XhjAJM5JwAMmUnyJK2ylwyukgvgPgb7lxghrG/qdjGJAA5K9mPB6BY2n5TYAiSJd3OreVr8M+But2Pa94OoyIEbCNzn3dl16FMSvI8jyXKf1el0e14vjKEPstvsQtvC6bGOotBax2DB3JEHJ6hGu2w3SRAG0Y2Rg06j0Cq8e1wkehBXNk29nWopLR557S46WyZOAk/FPww58ai0GcOz8o2XobKloJfxG3VEuKrXe1MA42z+62jzSi/qZT4YzVSPmviv4dq0MkhzdtQ6xJx07rmflivceIuEkNmO5nfdc2l4YD7UyF6XH5Lx+x5XJ4UcvoeaNs7osmiei9qz8POcCQI9cKmfhd5y4cTBMEp/wBcP0h/8+Xo8VpW2UCdgV69nhzBgtRm2rW7BD8pekJeA/bPJjw4/YUXrTRHRRT/AEs0/iiW6mEu+kvQDw4Hcqf41g6rkXKkeg+Js8u+kUu9pXq63h4GQlTbg8LSPMjOXAeZc3ss+WvRutR0WDZt6LRcyMn47PPhp6Ltfh3woV3HV+hkahmXTMDtst/4/Oy734btQ0vMngae3/L+FHLz/R12VxeP91fR06djTH6GNBGBDQOmAub41ZMMCoNQkHctA94XdpCG/HuVyvEmjMiTwMwJ49V58JPI9CUVjVHlH/h8VKpFNwazODJI9Oo35XIv/DzScWn2gNnAYP0XtLJwY1wJyf42StS7AewuGuJwYziB/Gey7oc87/UcM/G42r6Z499uQJIIHUggZ2yhaCdpK+kOrBxj9Wzt9h09NsLmV7YHLaWmSSIByD+yuPl/qM5eEvTPHMtXkxpd8Eb8ie69CWELIc6dlXztiXjRRwv8ce6gsCvRB0qein55FfzRPP8A5M8D9kRlk/8A4rutdGVtr5SfMyl48TifkHDqvSfhvw7S3zJOokj/AMj6lYt6cuAIJHIHRdynDCBwf42nuubm5m1R0cXDFOy2VHMOQS35eip7uWkH+PVGfXAkH3JKvUAy077j6LmR0s26t99EKtWb9UA1zsfj0QalQdFaiS5DjrgRAGEnWgoTnrDnq1GiHIQvKZJ9UG3plpBB2Mj/AEna7pSy3T0Ytbs7Fz4ngcOG399kd9/5lPVBafiJXK8Oo6pJbq7nYLoVLloZpb7JEkHuFi4paRqpN7Oa2p7Za8EOMRxnplEaxJXt0XgTuEbwy4JJafUfytWnVmSauhwMURZUWdmlI6cKyFUrQWRqY0oTrYFONZKKWx7kZUOrOUbI8ZQ3WBAmF1HP1bccoddhLZGdtympsnFCNnbantadjv7hK7FGiylMD9Q9cduiFTsRIyZ/68I99SMCN/vZTKVsqMaNG4aQWge/+ErdW7nHTA9f5KUpvg9pTd5XyNPO0JVT0F2ci7tQwH2pPpj4rn02zkruV7IkaiOu/wBFy32zs4I/lbwloxlElOsA4HoIHpunad24cAg7Tx0hJ21udyF0fLECUpNBGxC6oydURO/fvCEKacuXcDZGtmNfBgDqPonlSHjbOaKJOwRKnh7mruUrVoytVQo+X8K+M88KBRmUoTlduUMtTysWNBPD2HVIjoZ6FPXGRpPuQPDqjWyDyjVXA5H7ZWUuzRdCtUyADuFnyiMlELTvuqqh2207JiMEa8DdDHhry6MbST97o1pVh0njB7YhNNdpd8U22ugpMBa+GiTqMxxx7+6zdeEsGdToPpg/RZr1nAyMdEE3TnQ0knKFl3Ynj0I0LB7yY2Bgn6I19ZNBhoiB03XXpV/Z2iEuWEgmD2VfI7JwVHPtmuAgDB+CUdbOO/sjqZXWZdFo0mBHxSl9dlwiVabslpUcWvTgkdFqyrBm4z1Cqsck9UEuhb9o57pncY6RIOColbYDSMAe9RZUbo72pbYUvqRKbsrE2Q9TwhXNbhX5iC/OYUpbGBFRNWLw4wdhmEkGlxxhHt2FpI6gKn0Sjq0Hgku2HRXWq6xkehSQMNPqsh8hZ0XYEth2Rjonbas0ziI2hJ1GytUqUKn0SGqVCsqOICUq3KEgbDliUqUyewRrd5JiExwdsb9k7oKsQbbnC094acYTPmiJXPqGSmtiejo2tyHCDg/NMVG4XGZhPUbkkQVLj+DUiqlEnhEtbWXCdu/VPWjwd94x9FmuCIj0U5eiq9lVaA5AGVVOlmTgdP6TPlxvk43+Sjzz9lTZVCtZo3OewXMu6hHstz1H74T1bftK5d4du0rSCIkwderp0VBhwEEE5M8p+1uxUEkiRx1HVcSr7SP4d7LwDzgLVxVGSls9A7T+ogHoFy6jxJMb9MJ5jZwh1reMwslo0ewFF0J+4f7AI6LnLo27pbEbIl+gjgXIzKWe0nsurcWznEkNn0UHh7iNJgdcytVNIycGcVtsXGG557Jd1Ik5wvVvt202wNyOOVzqlq2RJOeT0VR5SXxAaVOnA+pVpsWFPqolkisWTWtByBK01ymikxvXhWx6A0rbXKaKsJSfv3UkrJHK1KBh6j5WyW8IDXqi5TQWElWKiAXqg9OhWEruQ6dtyVYcmGvlHQDFrbaBPJHwSVRhBORHK6N4ABA4XPcwnA52UR/S2Ia9OJMTsOidsrYVNTswPiqqeGmMuz0H1WLZr2TGxwfqrbTWiEt7GKtkDtjtwtU7OBJPwTnTkxnssOgb5WeTLxRVpTOoevwT11bEZCUoOE45XSo1wPZJUtlIXyd1i6qgcY6pm4cJEbcrleIPE4OEJWwejNaq1w4Eb7rj3B467Iz3ke9ZtSGuk/6W8VRlJ2J0rJ7iYEAbk4hCoPLXyPaLT7j1XoqhhmPXPMri1GAGQqjOyJRoZ8Iru8wlxJmfsLsTOei87QqaTJzBn1XpbasHsBGB0PCz5FTs043qhS4YdwMIthQJE8ZH30TNUgxtCK14AluOyzctF1syW6dglqtEb7/JMVbnA4S1Z+DshAwJph5jhJeItaNhkbdExRf7YWPEqPMrROmQ9o435pypU5ii30YbG3LIK09CKSLGGFaDkCmUxQpk7CVLGbmFC5ZVkykMnmKF6wWrTacyOiBE1K2EzAQSCm/D7UuOoyAIiOUPSBW2GFqYyc9EaypAOGpwAHb5pupj1SxbmYWWTZrikOVHBwnZZtAASeyVB7qm1COVNDsPdCeYCUpUoP6t+Ciuqz0QKVcTlUroTobD45Qn5WCZOUWkwE4KXQzdvSESUR1YDcfVMimA2PuUldNnJSux9GzekAgZHukLmXBJmAUywhDquVLTJezmPcVgOKcuojAUsrMPyT7h/K1yVWZ07KdcF2O3yQX2DyCdvmuiLZjXYklGuH4+ypzroeN9nnawxGxCf8IrubvJB9SPvZHtrLW/Wf0t7TPZdOuwASE5zVUEYO7BXNYObkQRluDulKNy4kif7QL+4LYI/wBLfhpDwXEZGx9VONKxuVuh+m/qh1yCMLNR+ErVeApSG2QESnDT1tA27rntqA7J+lXlOVhGif41n3KiOQDyos8mXijhQp5R6IgbKcp25jK6W6MUrFhRG0J62pFrM4kz/tEoUIMkrLjmFm5WWlQtVk7/ANq/IECP7RY6qFFhQPyo5WqNMSZWdUmAVoNj/wCkAFq6TuB8EW0o4wSOn9rDKE5J9wTfHRQ36KSM/NLvemGROUC4CSGwDnIL3okINaFaIYKpVQ6Z9rKhatMZBVkD1BkYTBdAxvO6VpZyiaws2aIboXBIyVVSCkwVZqJYjs24BAqKy9YL1SJYu8otrX0z3Q6iwArqyRtleJ7rfmGEtQAO66VCm0ZhRKkUtjFu0BgA33P8peuUw15OAsm32O/ZZpl0c80m9N1hjiIaIAG0Jy6pAjA23H3ulKjcLROyGqN08mEh4g2Mz7lRqQd1q5brjpGVSVMlvQlRqEmF0bdxJhoGOUO38PkEjrieV0X0fKb1MZ7Sicl0EYs2Q0Y+qpIFxPKijArIq3/UMLovz7kpZUnZIGE5Rc7LdM9+FU3sIrQRgwsvC3o5KB5m54HKgsHUSz6p26pqoCdhI7K7cgCIzyrsigFGzcc/pW61Et2Mp+JlBqsyFOTY8RihkSRnvwj0nQClqb8o0FQy0UWwZQqwlGjvhU+NkrGKspSgPoJuIWdKpMmhF9NUGdk+SgmTsqUicShQVOYQtipjKtkOGDKVjoUqSsEwJlN1WYwuVcyOVcdky0NtIPKkLn2VJznduV0KREwPim1Qk7J5MrTqGkSR7pQn3MGAivuJalsejdO7YQGgaeMpnSQuEHgGXbBdZtySNRAASlGugjK+x6hWZyQCN+/aUzqB2IgriV6jYBByh2FwWl0bHgqcPZWXo71WiNwuboGxTNLxJpEQe/ZAcBqIme/dSrQ3TFTaN1LNSnlHqZKE8rRMig1mYx6/JaunhL0qpCPQoa91LW7Y09UKeYFF0fyLOn7qJ5oMGEjSIGw26rNInA6lMGmhvEZUWXRV0Yxuue72iBxhNPqg7qhTEghUtCeyVDGBsNgs02kuxzhHbTBzuVmI+KVhQQnTufXCt1MHY4Q2Vd+fVFYT8UijLGQJTFGSsNcFg9OEuwDeYPVBe2TK0FphSAFoK1pCJrWCcpgLuaqayUZ6w1MQtXZiDhBsfZko90JCBSZJAkxKpdEvsaqDC5Nal7UHbquuWpN7c/JOLoUlYGNLS37MoDHkAjumKlLkkIDmq0QwbRJwMroeRjTt+6xaUCMpzRGTylKRUUcl9sCYk79F0HwBHEfJEcwgErn1H90XkFUDquzCLauHv+aA4rVvvwqa0Texo9QjU3JalUlGUMpMOAoaUrVFh0yFdUqCg1NgAx+yD+ZLSpTeQhVW8oS3sG/weZ7Qnqokm3D4xge5UjFhkPF56rJf3VKIKBuaCt6lFEgBueAqY+d1FExWaKKzhRRJjRb1bVaiQw0IRUUSQMJTZKxUbCpRAApWqbZIUUVEl1qO6FRpKlEeh0XUCXexUomiWYdRWqdHBPuUUVN6EjLDBg7Jo1Rjp1UUSYIDWBdhI/lHE7qKJp0DVi9RhCNQA/ZRRaXoithqdGEzRpqKLNstIOHnbaFh+8KKKQDtoYWzT4iVFFNl0FZTAEQFFFEDo//Z");
+                margin-top: 20px;
+                padding: 10px;
+                border-radius: 5px;
+                /* background-color: #4fa3b6; */
+                color: rgb(14, 1, 1);
+                text-align: center;
+                overflow-wrap: break-word;
+                font-size: 16px;
+                box-shadow: 0 0 5px #c5abab;
+                gap: 20px;
+              }
+    </style>
+  </head>
+  <body>
+    <!-- Make the weather app containers and form here -->
+    <div id="weather-container">
+      <h1>Weather App</h1>
+      <form id="location-form">
+        <input
+          type="text"
+          id="location-input"
+          placeholder="Enter a city"
+        />
+      
+        <button type="submit" onclick=getWeather()>Get Weather</button>
+      </form>
+      <p id="weather-data"></p>
+    </div>
+
+    <script src="script.js">
+    </script>
+  </body>
+</html>
